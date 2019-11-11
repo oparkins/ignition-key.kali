@@ -13,22 +13,20 @@
       - mimikatz
       - go
       - docker.io
-
-
 - name: Install Empire
   block:
-    git:
-      repo: https://github.com/EmpireProject/Empire.git
-      target: /build/empire
-    shell: bash -c /build/empire/setup/install.sh
+    - git:
+        repo: https://github.com/EmpireProject/Empire.git
+        target: /build/empire
+    - shell: bash -c /build/empire/setup/install.sh
 
 - name: Install Impacket
   block:
-    git:
-      repo: https://github.com/SecureAuthCorp/impacket.git
-      target: /build/impacket
-    pip:
-      requirements: /build/impacket/requirments.txt
+    - git:
+        repo: https://github.com/SecureAuthCorp/impacket.git
+        target: /build/impacket
+    - pip:
+        requirements: /build/impacket/requirments.txt
 
 - name: Install Shellz
   shell: go get -u github.com/evilsocket/shellz/cmd/shellz
@@ -39,10 +37,11 @@
     target: /root/tools/pusheen
 
 - name: Install Pupy
-  git:
-    repo: https://github.com/n1nj4sec/pupy.git
-    target: /root/tools/pupy
-  shell: bash -c /root/tools/pupy/install.sh
+  block:
+    - git:
+        repo: https://github.com/n1nj4sec/pupy.git
+        target: /root/tools/pupy
+    - shell: bash -c /root/tools/pupy/install.sh
 
 - name: Install PHP reverse shell
   git:
