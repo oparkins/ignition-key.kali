@@ -6,14 +6,18 @@
       - psutil
 
 - name: Install Generic Applications
-  apt:
-    pkg:
-      - fonts-powerline
-      - network-manager-openvpn-gnome
-      - figlet
-      - toilet
-      - golang
-      - docker.io
+  block:
+    - apt:
+        pkg:
+          - fonts-powerline
+          - network-manager-openvpn-gnome
+          - figlet
+          - toilet
+          - golang
+          - docker.io
+    - apt:
+        deb: https://github.com/sharkdp/bat/releases/download/v0.12.1/bat-musl_0.12.1_amd64.deb
+  
 
 - name: Install and Use Numix Theme
   block:
