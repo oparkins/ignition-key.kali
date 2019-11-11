@@ -2,9 +2,6 @@
 
 - name: Install and Use Numix Theme
   block:
-    - name: Setup Repository
-      apt_repository:
-        repo: ppa:numix/ppa
     - name: Install theme
       apt:
         pkg:
