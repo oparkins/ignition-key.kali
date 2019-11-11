@@ -17,14 +17,14 @@
   block:
     - git:
         repo: https://github.com/EmpireProject/Empire.git
-        target: /build/empire
+        dest: /build/empire
     - shell: bash -c /build/empire/setup/install.sh
 
 - name: Install Impacket
   block:
     - git:
         repo: https://github.com/SecureAuthCorp/impacket.git
-        target: /build/impacket
+        dest: /build/impacket
     - pip:
         requirements: /build/impacket/requirments.txt
 
@@ -34,19 +34,19 @@
 - name: Get Pusheen-sl
   git:
     repo: https://github.com/tryton-vanmeer/pusheen-sl.git
-    target: /root/tools/pusheen
+    dest: /root/tools/pusheen
 
 - name: Install Pupy
   block:
     - git:
         repo: https://github.com/n1nj4sec/pupy.git
-        target: /root/tools/pupy
+        dest: /root/tools/pupy
     - shell: bash -c /root/tools/pupy/install.sh
 
 - name: Install PHP reverse shell
   git:
     repo: https://github.com/slattman/php-reverse-shell.git
-    target: /root/tools/php-reverse-shell
+    dest: /root/tools/php-reverse-shell
 
 - name: Install pwntools
   pip:
