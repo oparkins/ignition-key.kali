@@ -1,0 +1,52 @@
+---
+
+- name: Install and Use Numix Theme
+  block:
+    - name: Setup Repository
+      apt_repository:
+        repo: ppa:numix/ppa
+    - name: Install theme
+      apt:
+        pkg:
+          - numix-gtk-theme 
+          - numix-icon-theme-circle 
+          - numix-icon-theme-square
+        update_cache: yes
+    - name: Set theme to numix
+      dconf: key="/org/gnome/desktop/interface/gtk-theme" value="'Numix'"
+    - name: Set icon theme to numix
+      dconf: key="/org/gnome/desktop/interface/icon-theme" value="'Numix-Circle'"
+
+- name: Edit Gnome Settings
+  block:
+    - name: Show Clock Date
+      dconf: key="/org/gnome/desktop/interface/clock-show-date" value="'true'"
+
+- name: Modify Gnome Extensions
+  block:
+    - name: Disable extensions
+      shell: "gnome-extensions uninstall {{ item }}"
+      with_items:
+        - ProxySwitcher@flannaghan.com
+        - apps-menu@gnome-shell-extensions.gcampax.github.com
+        - auto-move-windows@gnome-shell-extensions.gcampax.github.com
+        - dash-to-dock@micxgx.gmail.com
+        - desktop-icons@csoriano
+        - drive-menu@gnome-shell-extensions.gcampax.github.com
+        - launch-new-instance@gnome-shell-extensions.gcampax.github.com
+        - native-window-placement@gnome-shell-extensions.gcampax.github.com
+        - places-menu@gnome-shell-extensions.gcampax.github.com
+        - screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com
+        - user-theme@gnome-shell-extensions.gcampax.github.com
+        - window-list@gnome-shell-extensions.gcampax.github.com
+        - windowsNavigator@gnome-shell-extensions.gcampax.github.com
+        - workspace-indicator@gnome-shell-extensions.gcampax.github.com
+        - workspaces-to-dock@passingthru67.gmail.com
+        - horizontal-workspaces@gnome-shell-extensions.gcampax.github.com
+    - name: Enable extensions
+      shell: "gnome-extensions enable {{ item }}"
+      with_items:
+        - EasyScreenCast@iacopodeenosee.gmail.com
+
+
+
