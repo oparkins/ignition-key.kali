@@ -1,5 +1,10 @@
 ---
 
+- name: Install pip modules
+  pip:
+    name:
+      - psutil
+
 - name: Install and Use Numix Theme
   block:
     - name: Install icon and theme build tools
@@ -34,10 +39,11 @@
       dconf: key="/org/gnome/desktop/screensaver/idle-activation-enabled" value="'false'"
     - name: Show Clock Date
       dconf: key="/org/gnome/desktop/wm/preferences/button-layout" value="'appmenu:minimize,maximize,close'"
+
 - name: Modify Gnome Extensions
   block:
     - name: Disable extensions
-      shell: "gnome-extensions uninstall {{ item }}"
+      shell: "gnome-extensions disable {{ item }}"
       with_items:
         - ProxySwitcher@flannaghan.com
         - apps-menu@gnome-shell-extensions.gcampax.github.com
@@ -65,8 +71,9 @@
   - name: Install zsh
     apt:
       pkgs:
-      - zsh
+        - zsh
   - name: Install oh-my-zsh
     shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-    
+  - name: Setup Agnoster
+    shell: sed -i -e 's/ZSH_THEME="\(.*\)"/ZSH_THEME="agnoster"/' ~/.zshrc   
 
