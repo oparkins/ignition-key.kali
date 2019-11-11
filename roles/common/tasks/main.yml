@@ -66,6 +66,24 @@
       with_items:
         - EasyScreenCast@iacopodeenosee.gmail.com
 
+- name: Add Key bindings
+  block:
+    - dconf: key="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/{{ item.title }}/name" value="'{{ item.name }}'"
+      with_items:
+      - { title: "custom0", name: "Terminal"}
+      - { title: "custom1", name: "Firefox"}
+      - { title: "custom2", name: "Files"}
+    - dconf: key="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/{{ item.title }}/binding" value="'{{ item.binding }}'"
+      with_items:
+      - { title: "custom0", binding: "<Super>Return"}
+      - { title: "custom1", binding: "<Super>i"}
+      - { title: "custom2", binding: "<Super>e"}
+    - dconf: key="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/{{ item.title }}/command" value="'{{ item.command }}'"
+      with_items:
+      - { title: "custom0", command: "gnome-terminal" }
+      - { title: "custom1", command: "firefox" }
+      - { title: "custom2", command: "nautilus" }
+
 - name: Install zsh and theme
   block: 
     - name: Install zsh
