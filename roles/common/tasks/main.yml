@@ -115,6 +115,9 @@
         path: /root/.zshrc
         regexp: ZSH_THEME=.*$
         replace: ZSH_THEME="agnoster"
+    - user:
+        name: root
+        shell: /bin/zsh
 
 - name: Install tools
   include: tools.yml
