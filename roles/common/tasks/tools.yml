@@ -11,7 +11,7 @@
       - toilet
       - hashcat
       - mimikatz
-      - go
+      - golang
       - docker.io
 - name: Install Empire
   block:
