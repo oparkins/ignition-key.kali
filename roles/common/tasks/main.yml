@@ -113,3 +113,6 @@
 
 - name: Install tools
   include: tools.yml
+
+- name: Reboot machine to apply all changes
+  reboot:
