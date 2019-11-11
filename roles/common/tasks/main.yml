@@ -5,6 +5,16 @@
     name:
       - psutil
 
+- name: Install Generic Applications
+  apt:
+    pkg:
+      - fonts-powerline
+      - network-manager-openvpn-gnome
+      - figlet
+      - toilet
+      - golang
+      - docker.io
+
 - name: Install and Use Numix Theme
   block:
     - name: Install icon and theme build tools
@@ -15,7 +25,6 @@
           - libglib2.0-dev 
           - libgdk-pixbuf2.0-dev 
           - libxml2-utils
-          - fonts-powerline
         update_cache: yes
     - name: Download numix theme
       git:
