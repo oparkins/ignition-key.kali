@@ -13,6 +13,7 @@
       - mimikatz
       - golang
       - docker.io
+  
 - name: Install Empire
   block:
     - git:
@@ -26,7 +27,7 @@
         repo: https://github.com/SecureAuthCorp/impacket.git
         dest: /build/impacket
     - pip:
-        requirements: /build/impacket/requirments.txt
+        requirements: /build/impacket/requirements.txt.txt
 
 - name: Install Shellz
   shell: go get -u github.com/evilsocket/shellz/cmd/shellz
