@@ -68,14 +68,17 @@
 
 - name: Install zsh and theme
   block: 
-  - name: Install zsh
-    apt:
-      pkg:
-        - zsh
-  - name: Install oh-my-zsh
-    shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  - name: Setup Agnoster
-    shell: sed -i -e 's/ZSH_THEME="\(.*\)"/ZSH_THEME="agnoster"/' ~/.zshrc   
+    - name: Install zsh
+      apt:
+        pkg:
+          - zsh
+    - file:
+        state: absent
+        path: /root/.oh-my-zsh
+    - name: Install oh-my-zsh
+      shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    - name: Setup Agnoster
+      shell: sed -i -e 's/ZSH_THEME="\(.*\)"/ZSH_THEME="agnoster"/' ~/.zshrc   
 
 - name: Install tools
   include: tools.yml
