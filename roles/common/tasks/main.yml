@@ -93,6 +93,7 @@
       - { title: "custom0", command: "gnome-terminal" }
       - { title: "custom1", command: "firefox" }
       - { title: "custom2", command: "nautilus" }
+    - dconf: key="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings" value="['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/']"
 
 - name: Install zsh and theme
   block: 
@@ -108,11 +109,8 @@
     - name: Setup Agnoster
       replace:
         path: /root/.zshrc
-        regexp: ZSH_THEME="\(.*\)"
+        regexp: ZSH_THEME=.*$
         replace: ZSH_THEME="agnoster"
 
 - name: Install tools
   include: tools.yml
-
-- name: Reboot machine to apply all changes
-  reboot:
