@@ -2,13 +2,23 @@
 
 - name: Install and Use Numix Theme
   block:
-    - name: Install theme
+    - name: Install icon and theme build tools
       apt:
         pkg:
-          - numix-gtk-theme 
-          - numix-icon-theme-circle 
-          - numix-icon-theme-square
+          - numix-icon-theme-circle
+          - ruby-sass
+          - libglib2.0-dev 
+          - libgdk-pixbuf2.0-dev 
+          - libxml2-utils
         update_cache: yes
+    - name: Download numix theme
+      git:
+        repo: https://github.com/numixproject/numix-gtk-theme.git
+        dest: /tmp/numix
+    - name: Build and Install
+      make:
+        chdir: /tmp/numix
+        target: install
     - name: Set theme to numix
       dconf: key="/org/gnome/desktop/interface/gtk-theme" value="'Numix'"
     - name: Set icon theme to numix
@@ -18,7 +28,12 @@
   block:
     - name: Show Clock Date
       dconf: key="/org/gnome/desktop/interface/clock-show-date" value="'true'"
-
+    - name: Disable Lock Screen
+      dconf: key="/org/gnome/desktop/lockdown/disable-lock-screen" value="'true'"
+    - name: Disable Screensaver
+      dconf: key="/org/gnome/desktop/screensaver/idle-activation-enabled" value="'false'"
+    - name: Show Clock Date
+      dconf: key="/org/gnome/desktop/wm/preferences/button-layout" value="'appmenu:minimize,maximize,close'"
 - name: Modify Gnome Extensions
   block:
     - name: Disable extensions
@@ -45,5 +60,6 @@
       with_items:
         - EasyScreenCast@iacopodeenosee.gmail.com
 
+- name: Install zsh and theme
 
 
