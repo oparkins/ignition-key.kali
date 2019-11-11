@@ -27,7 +27,7 @@
         repo: https://github.com/SecureAuthCorp/impacket.git
         dest: /build/impacket
     - pip:
-        requirements: /build/impacket/requirements.txt.txt
+        requirements: /build/impacket/requirements.txt
 
 - name: Install Shellz
   shell: go get -u github.com/evilsocket/shellz/cmd/shellz
