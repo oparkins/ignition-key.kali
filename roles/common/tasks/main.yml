@@ -15,6 +15,7 @@
           - libglib2.0-dev 
           - libgdk-pixbuf2.0-dev 
           - libxml2-utils
+          - fonts-powerline
         update_cache: yes
     - name: Download numix theme
       git:
