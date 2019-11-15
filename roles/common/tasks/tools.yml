@@ -15,8 +15,8 @@
 - name: Install Juypter Notebook
   block:
     - pip:
-      executable: pip3
-      name:
-        - jupyterlab
-        - bash_kernel
+        executable: pip3
+        name:
+          - jupyterlab
+          - bash_kernel
     - shell: python -m bash_kernel.install
