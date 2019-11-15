@@ -9,44 +9,14 @@
       - xautomation
       - hashcat
       - mimikatz
-      
-  
-- name: Install Empire
+      - samba
+      - remmina
+    
+- name: Install Juypter Notebook
   block:
-    - git:
-        repo: https://github.com/EmpireProject/Empire.git
-        dest: /build/empire
-    - shell: bash -c /build/empire/setup/install.sh
-
-- name: Install Impacket
-  block:
-    - git:
-        repo: https://github.com/SecureAuthCorp/impacket.git
-        dest: /build/impacket
     - pip:
-        requirements: /build/impacket/requirements.txt
-
-- name: Install Shellz
-  shell: go get -u github.com/evilsocket/shellz/cmd/shellz
-
-- name: Get Pusheen-sl
-  git:
-    repo: https://github.com/tryton-vanmeer/pusheen-sl.git
-    dest: /root/tools/pusheen
-
-- name: Install Pupy
-  block:
-    - git:
-        repo: https://github.com/n1nj4sec/pupy.git
-        dest: /root/tools/pupy
-    - shell: bash -c /root/tools/pupy/install.sh
-
-- name: Install PHP reverse shell
-  git:
-    repo: https://github.com/slattman/php-reverse-shell.git
-    dest: /root/tools/php-reverse-shell
-
-- name: Install pwntools
-  pip:
-    name:
-      - pwntools
+      executable: pip3
+      name:
+        - jupyterlab
+        - bash_kernel
+    - shell: python -m bash_kernel.install
