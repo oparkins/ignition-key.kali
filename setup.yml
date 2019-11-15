@@ -3,3 +3,6 @@
 - hosts: localhost
   roles:
     - common
+    - exploitation
+    - persistence
+    - reverse-engineering
