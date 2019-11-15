@@ -17,7 +17,16 @@
           - docker.io
     - apt:
         deb: https://github.com/sharkdp/bat/releases/download/v0.12.1/bat-musl_0.12.1_amd64.deb
-  
+    - name: Install VS Code
+      apt:
+        deb: https://go.microsoft.com/fwlink/?LinkID=760868
+
+- name: Enable and Start Docker
+  systemd:
+    name: docker
+    state: started
+    enabled: yes
+    masked: no
 
 - name: Install and Use Numix Theme
   block:
@@ -121,3 +130,8 @@
 
 - name: Install tools
   include: tools.yml
+
+- name: Prepare the memez
+  copy:
+    src: files/red_team_memes/
+    dest: /home/root/Pictures/memes
