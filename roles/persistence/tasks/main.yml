@@ -1,0 +1,26 @@
+---
+
+- name: Install Shellz
+  shell: go get -u github.com/evilsocket/shellz/cmd/shellz
+
+- name: Get Pusheen-sl
+  git:
+    repo: https://github.com/tryton-vanmeer/pusheen-sl.git
+    dest: /root/tools/pusheen
+
+- name: Install Pupy
+  block:
+    - git:
+        repo: https://github.com/n1nj4sec/pupy.git
+        dest: /root/tools/pupy
+    - shell: bash -c /root/tools/pupy/install.sh
+
+- name: Install Terminal Parrot Example
+  pip: 
+    name:
+      - parrot-terminal
+
+- name: Install PHP reverse shell
+  git:
+    repo: https://github.com/slattman/php-reverse-shell.git
+    dest: /root/tools/php-reverse-shell
