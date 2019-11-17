@@ -1,5 +1,5 @@
 # ignition-key.kali
-Ansible scripts to install tools and files wanted on a new Kali Machine
+Ansible scripts to install tools and files wanted on a new Kali Machine. The name and the idea was taken from [John Hammond](https://github.com/JohnHammond).
 
 ## How to use
 To use this repository, follow these steps on a Kali Linux machine:
