@@ -1,5 +1,10 @@
 ---
 
+- name: Update Machine
+  apt:
+    update_cache: yes
+    upgrade: full
+
 - name: Install pip modules
   pip:
     name:
