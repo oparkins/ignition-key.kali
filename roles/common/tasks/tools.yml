@@ -11,6 +11,7 @@
       - mimikatz
       - samba
       - remmina
+      - gnome-screenshot
     
 - name: Install Juypter Notebook
   block:
