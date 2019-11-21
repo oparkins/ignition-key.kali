@@ -46,11 +46,6 @@ This list will grow as this repository is improved upon
 ![theme](./screenshots/theme.png)
 
 ## Future Work
-- Clean up ansible files
-    - They need to be separated more. Few files do too much
-    - Add more roles. Clearly define the roles
-- More tools
-    - vs code
 - Setup listeners automatically
     - Have pupy and others be ready to deploy payloads and listen
 - Add scripts
