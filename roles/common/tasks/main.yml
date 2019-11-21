@@ -15,6 +15,8 @@
           - toilet
           - golang
           - docker.io
+          - tree
+          - sshpass
     - apt:
         deb: https://github.com/sharkdp/bat/releases/download/v0.12.1/bat-musl_0.12.1_amd64.deb
     - name: Install VS Code
