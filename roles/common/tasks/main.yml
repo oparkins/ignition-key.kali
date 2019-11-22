@@ -135,10 +135,11 @@
         name: root
         shell: /bin/zsh
 
-- name: Install tools
-  include: tools.yml
-
 - name: Prepare the memez
   copy:
     src: files/red_team_memes/
     dest: /home/root/Pictures/memes
+
+- name: Install tools
+  include: tools.yml
+
