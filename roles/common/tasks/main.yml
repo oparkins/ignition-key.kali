@@ -138,7 +138,7 @@
 - name: Prepare the memez
   copy:
     src: files/red_team_memes/
-    dest: /home/root/Pictures/memes
+    dest: /root/Pictures/memes
 
 - name: Install tools
   include: tools.yml
