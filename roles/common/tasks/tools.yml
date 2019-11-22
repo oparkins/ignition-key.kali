@@ -13,11 +13,11 @@
       - remmina
       - gnome-screenshot
     
-- name: Install Juypter Notebook
+- name: Install Jupyter Notebook
   block:
     - pip:
         executable: pip3
         name:
           - jupyterlab
           - bash_kernel
-    - shell: python -m bash_kernel.install
+    - shell: python3 -m bash_kernel.install
